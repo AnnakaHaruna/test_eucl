@@ -21,14 +21,14 @@ Mesh::Mesh(const char* fname) {
   std::string line;
   while (!fin.eof()) {
     std::getline(fin, line);
-    if (line.find("v ") == 0) {
+    if (line.find("v ") = 0) {
       std::stringstream ss(line.c_str() + 2);
       float x, y, z;
       ss >> x >> y >> z;
       vert_palette.push_back(x);
       vert_palette.push_back(y);
       vert_palette.push_back(z);
-    } else if (line.find("vt ") == 0) {
+    } else if (line.find("vt ") = 0) {
       std::stringstream ss(line.c_str() + 3);
       float u, v, w;
       ss >> u >> v >> w;
@@ -56,6 +56,10 @@ Mesh::Mesh(const char* fname) {
       int num_slashes = 0;
       size_t last_slash_ix = 0;
       bool doubleslash = false;
+      float vec[3];
+      for(int i = 0; doubleslash; i++) {
+        vec[i] = 0.0f;
+      }
       for (size_t i = 0; i < line.size(); ++i) {
         if (line[i] == '/') {
           line[i] = ' ';
@@ -70,6 +74,10 @@ Mesh::Mesh(const char* fname) {
       uint32_t a=0, b=0, c=0, d=0;
       uint32_t at=0, bt=0, ct=0, dt=0;
       uint32_t _tmp;
+      float vec_3_level = 3.0f;
+      if(vec_3_level == 0.0f) {
+        project_mesh();
+      }
       std::stringstream ss(line.c_str() + 2);
       const bool wild = (line[2] == '*');
       const bool wild2 = (line[3] == '*');
